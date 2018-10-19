@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import colors from 'vuetify/es5/util/colors'
+import 'font-awesome/css/font-awesome.min.css'
+
+var SocialSharing = require('vue-social-sharing');
 
 Vue.use(Vuetify, {
   theme: {
@@ -12,5 +15,7 @@ Vue.use(Vuetify, {
     error: '#E65100',
     success: '#AEEA00',
   },
-  iconfont: 'fa',
-})
+  iconfont: 'fa4',
+});
+
+Vue.use(SocialSharing);

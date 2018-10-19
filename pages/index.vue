@@ -6,7 +6,7 @@
           h1 Edumate
           v-spacer
           v-flex.ma-2
-            v-text-field(label="Aku mau belajar ...", prepend-icon="search")
+            v-text-field(label="I want to Learn ...", prepend-icon="search")
           v-btn(round, color="orange accent-2") LOG IN
           v-btn(round, color="grey lighten-2") Sign Up
     v-layout(row wrap)
@@ -14,24 +14,16 @@
         v-tabs(color="grey lighten-3" slider-color="orange accent-3" slot="extension" grow centered)
           v-tab(ripple key="home")
             span Home
-          v-tab(ripple key="offline_tutoring")
+          v-tab(ripple key="offline_tutoring" @click="debug")
             span Offline Tutoring
           v-tab(ripple key="online_tutoring")
             span Online Tutoring
           v-tab(ripple key="about")
             span About
+    br
     v-layout.pt-3(row wrap)
-      v-flex(xs12)
-        v-card
-          v-img(src="https://www.vpul.upenn.edu/tutoring/images/rotating/159959be499f6b_MEPOQKNIJGHFLf.jpg" 
-                height="300px" 
-                class="gray--text")
-            v-container(fill-height fluid)
-              v-layout
-                v-flex.xs12(align-end, flexbox)
-                  v-btn.large.attractive(right round color="orange accent-2") Pick A Tutor
-                  br
-                  v-btn.large.informative(right round color="gray accent-2") Get Started
+      HomeBanner
+    br
     v-layout(row wrap)
       v-toolbar
         v-tabs(color="grey lighten-3" slider-color="orange accent-3" slot="extension" grow centered)
@@ -60,50 +52,28 @@
           li 
             span Trustowrthy and Capable Tutors
     br
-    v-layout(row wrap)
-      v-footer(height="auto")
-        v-card(color="orange lighten-1")
-          v-card-text
-            v-btn(v-for="icon in icons", :key="icon", icon)
-              v-icon(size="24px") {{ icon }}
-          v-card-text(class="white--text pt-0")
-            span Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
+    Footer
 </template>
 
 <script>
+import Footer from '../components/footer.vue';
+import HomeBanner from '../components/homebanner.vue';
 
 export default {
+  components: {
+    Footer,
+    HomeBanner,
+  },
   data(){
     return {
-      icons: [
-        'fab fa-facebook',
-        'fab fa-twitter',
-        'fab fa-google-plus',
-        'fab fa-linkedin',
-        'fab fa-instagram'
-      ]
+      
     };
+  },
+  methods: {
+    
   },
 }
 </script>
 
-<style scoped>
-  .large{
-    height: 25%;
-    width: 30%;
-    text-transform: capitalize;
-  }
-
-  .attractive{
-    font-size: 24px;
-    color: white;
-  }
-  
-  .informative{
-    font-size: 24px;
-    color: orange;
-  }
-</style>
 
 
