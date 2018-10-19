@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-container(grid-list-md text-xs-center class="grey darken-2 white--text text-xs-center")
+	v-container(fluid grid-list-md text-xs-center class="grey darken-2 white--text text-xs-center")
 		v-layout(row wrap)
 			v-flex(xs4)
 				v-card.xs4(flat, tile, class="grey darken-2 white--text")
