@@ -37,7 +37,7 @@ export default {
 	methods: {
 		gotoElementary() {
 			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'elementary'});
-			console.log(this.tutorFilter);
+			this.$router.push('/home/tutoring/search');
 		},
 	},
 }
