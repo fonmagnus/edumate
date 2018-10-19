@@ -2,13 +2,13 @@
 	v-layout(row wrap)
 		v-flex.xs12
 			v-toolbar.pa-3
-				v-flex.xs4
+				v-flex.xs3
 					.display-1 Edumate
-				v-flex.xs4.pl-3.pr-3.pt-2
+				v-flex.xs6.pl-3.pr-3.pt-2
 					v-text-field(label="I want to Learn ...", prepend-icon="search" color="orange accent-3")
 				v-flex.xs1
 					v-btn(flat) search
-				v-flex.xs3(v-if="!isLoggedIn" class="text-xs-right")
+				v-flex.xs6(v-if="!isLoggedIn" class="text-xs-right")
 					v-dialog(v-model="openLoginDialog", max-width="450px",  transition="slide-y-reverse-transition", persistent)
 						v-btn.white--text(slot="activator" round, color="orange accent-2" @click.native="showLoginDialog") LOGIN
 						LoginForm(:openLoginDialog="openLoginDialog" 
@@ -16,8 +16,10 @@
 											@hideLoginDialog="hideLoginDialog"
 											@loginUser="loginUser")
 					v-btn.orange--text(round, color="grey lighten-2") Sign Up
-				v-flex.xs3.text-xs-right(v-else)
-					span Welcome Back, {{ edumateUser.username }}!
+				v-flex.xs6.text-xs-right(v-else)
+					span Welcome Back, {{ edumateUser.username }}!   
+						a.orange--text(@click="logoutUser") Logout
+						
 </template>
 
 <script>
@@ -49,8 +51,12 @@
 				this.$emit('hideLoginDialog');
 			},
 			loginUser(loggedInEdumateUser) {
-				console.log(loggedInEdumateUser);
 				this.$emit('loginUser', loggedInEdumateUser);
+				this.hideLoginDialog();
+			},
+			logoutUser() {
+				this.$emit('logoutUser');
+				this.hideLoginDialog();
 			},
 		},
 	};

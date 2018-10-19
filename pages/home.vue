@@ -6,7 +6,8 @@
 						 :edumateUser="edumateUser"
 						 @showLoginDialog="showLoginDialog"
 						 @hideLoginDialog="hideLoginDialog"
-						 @loginUser="loginUser")
+						 @loginUser="loginUser"
+						 @logoutUser="logoutUser")
 		v-layout(row wrap)
 			Menubar
 		nuxt-child
@@ -46,6 +47,10 @@ export default {
 		loginUser(loggedInEdumateUser) {
 			this.isLoggedIn = true;
 			this.edumateUser = loggedInEdumateUser;
+		},
+		logoutUser() {
+			this.edumateUser = {};
+			this.isLoggedIn = false;
 		},
   },
 }
