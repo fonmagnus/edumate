@@ -7,15 +7,15 @@
 				v-container(fill-height fluid)
 					v-layout
 						v-flex.xs12(align-end, flexbox)
-							v-btn.headline.large.attractive(right round color="orange accent-2") Pick A Tutor
+							v-btn.title.large.attractive(right round color="orange accent-2") Pick A Tutor
 							br
-							v-btn.headline.large.informative(right round color="gray accent-2") Get Started
+							v-btn.title.large.informative(right round color="gray accent-2") Get Started
 </template>
 
 <style scoped>
   .large{
-    height: 25%;
-    width: 30%;
+    height: 20%;
+    width: 20%;
     text-transform: capitalize;
   }
 
