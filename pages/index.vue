@@ -14,7 +14,7 @@
         v-tabs(color="grey lighten-3" slider-color="orange accent-3" slot="extension" grow centered)
           v-tab(ripple key="home")
             span Home
-          v-tab(ripple key="offline_tutoring" @click="debug")
+          v-tab(ripple key="offline_tutoring")
             span Offline Tutoring
           v-tab(ripple key="online_tutoring")
             span Online Tutoring
