@@ -7,10 +7,21 @@
 				v-container(fill-height fluid)
 					v-layout
 						v-flex.xs12(align-end, flexbox)
-							v-btn.title.large.attractive(right round color="orange accent-2") Pick A Tutor
+							v-btn.title.large.attractive(right round color="orange accent-2" @click="gotoTutoring") Pick A Tutor
 							br
 							v-btn.title.large.informative(right round color="gray accent-2") Get Started
 </template>
+
+<script>
+export default {
+	methods: {
+		gotoTutoring() {
+			this.$router.push('/home/tutoring');
+		},
+	},
+}
+</script>
+
 
 <style scoped>
   .large{

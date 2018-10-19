@@ -1,10 +1,5 @@
 <template lang="pug">
-	v-container(fluid)
-		v-layout(row wrap)
-			v-flex(xs12)
-				v-card
-					v-img.transparent(src="http://literacyrochester.org/wp-content/uploads/2017/08/Depositphotos_6842439_original.jpg" height="450px")
-		br
+	v-container
 		v-layout(row wrap)
 			v-flex.pa-4(xs12 class="text-xs-center gray--text orange lighten-3")
 				.display-2 What's Your Grade?
@@ -30,15 +25,6 @@
 								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" @click="gotoSeniorHigh") Senior High School
 </template>
 
-<script>
-	export default {
-		methods: {
-			debug() {
-				console.log("ok");
-			},
-		},
-	};
-</script>
 
 <style scoped>
 
