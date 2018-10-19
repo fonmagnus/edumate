@@ -16,14 +16,32 @@
 					v-card(slot-scope="{ hover }" class="mx-auto" color="grey lighten-4")
 						v-img(src="https://www.collegeincolorado.org/images/cic/new/home/high_school.jpg" height="400px")
 							v-expand-transition
-								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" @click="gotoJuniorHigh") Junior High School
+								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" ) Junior High School
 			v-flex.xs4
 				v-hover
 					v-card(slot-scope="{ hover }" class="mx-auto" color="grey lighten-4")
 						v-img(src="https://hickamhigh.files.wordpress.com/2015/05/o-high-school-students-facebook.jpg" height="400px")
 							v-expand-transition
-								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" @click="gotoSeniorHigh") Senior High School
+								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" ) Senior High School
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+	computed: {
+		...mapGetters({
+			tutorFilter: 'tutorfilter/getTutorFilter',
+		}),
+	},
+	methods: {
+		gotoElementary() {
+			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'elementary'});
+			console.log(this.tutorFilter);
+		},
+	},
+}
+</script>
 
 
 <style scoped>
