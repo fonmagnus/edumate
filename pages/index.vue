@@ -40,17 +40,18 @@
           v-img(src="http://syllableslearningcenter.com//wp-content/uploads/2014/04/Syllables-Reading-Tutoring-helps-students-with-dyslexia.jpg" 
                 height="400px" 
                 class="gray--text")
-      v-spacer
       v-flex(xs6)
-        h2.pl-5.mt-5 Why Edumate?
+        br
+        span.pl-5.pt-5.mt-5.display-1 Why Edumate?
+        br
         br
         ul.pl-5
           li
-            span Easy To Use
+            span.subheading Easy To Use
           li 
-            span Adjust Your Need
+            span.subheading Adjust Your Need
           li 
-            span Trustowrthy and Capable Tutors
+            span.subheading Trustowrthy and Capable Tutors
     br
     Footer
 </template>
