@@ -1,18 +1,10 @@
 <template lang="pug">
-  div
-    v-layout(row wrap)
-      v-flex.xs12
-        v-toolbar
-          h1 Edumate
-          v-spacer
-          v-flex.ma-2
-            v-text-field(label="I want to Learn ...", prepend-icon="search")
-          v-btn(round, color="orange accent-2") LOG IN
-          v-btn(round, color="grey lighten-2") Sign Up
+  v-container
+    Header
     v-layout(row wrap)
       v-toolbar
         v-tabs(color="grey lighten-3" slider-color="orange accent-3" slot="extension" grow centered)
-          v-tab(ripple key="home")
+          v-tab(ripple key="home" to="/" href="/")
             span Home
           v-tab(ripple key="offline_tutoring")
             span Offline Tutoring
@@ -57,12 +49,14 @@
 </template>
 
 <script>
+import Header from '../components/header.vue';
 import Footer from '../components/footer.vue';
 import HomeBanner from '../components/homebanner.vue';
 
 export default {
   components: {
     Footer,
+    Header,
     HomeBanner,
   },
   data(){
