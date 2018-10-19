@@ -16,13 +16,13 @@
 					v-card(slot-scope="{ hover }" class="mx-auto" color="grey lighten-4")
 						v-img(src="https://www.collegeincolorado.org/images/cic/new/home/high_school.jpg" height="400px")
 							v-expand-transition
-								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" ) Junior High School
+								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" @click="gotoJuniorHighSchool") Junior High School
 			v-flex.xs4
 				v-hover
 					v-card(slot-scope="{ hover }" class="mx-auto" color="grey lighten-4")
 						v-img(src="https://hickamhigh.files.wordpress.com/2015/05/o-high-school-students-facebook.jpg" height="400px")
 							v-expand-transition
-								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" ) Senior High School
+								div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(color="orange darken-3", v-if="hover" @click="gotoSeniorHighSchool") Senior High School
 </template>
 
 <script>
@@ -37,6 +37,14 @@ export default {
 	methods: {
 		gotoElementary() {
 			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'elementary'});
+			this.$router.push('/home/tutoring/search');
+		},
+		gotoJuniorHighSchool() {
+			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'junior_high_school'});
+			this.$router.push('/home/tutoring/search');
+		},
+		gotoSeniorHighSchool() {
+			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'senior_high_school'});
 			this.$router.push('/home/tutoring/search');
 		},
 	},

@@ -1,5 +1,8 @@
 <template lang="pug">
-	h1 Hello
+	v-container
+		v-layout(row wrap)
+			v-flex.xs12
+				span.display-1 Search Your Tutor
 </template>
 
 <script>
