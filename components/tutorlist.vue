@@ -1,17 +1,40 @@
 <template lang="pug">
-	v-layout(row wrap)
-		v-flex.xs3(v-for="tutor in tutorList")
-			v-hover
-				v-card.mx-2(slot-scope="{ hover }" class="mx auto")
-					v-img(:src="tutor.photo" height="300px")
-						div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-center(
-							color="orange lighten-5", 
-							v-if="hover" 
-							@click="")
-					v-card-title
-						.headline {{ tutor.name }}
-					v-card-title(two-line)
-						.subheading.ellipsis {{ tutor.profileIntro }}
+	div
+		v-layout(row wrap)
+			v-flex.md12.text-xs-center.ma-3
+				.display-1 Pick Your Favorite Tutor
+		v-layout(row wrap)
+			v-flex.xs3(v-for="tutor in tutorList")
+				v-hover
+					v-card.ma-2(slot-scope="{ hover }" class="ma auto")
+						v-img(:src="tutor.photo" height="250px")
+							div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-left(
+								color="orange lighten-5", 
+								v-if="hover" 
+								@click="")
+								v-container
+									v-layout(row wrap)
+										v-flex(xs4)
+										v-flex(xs2)
+											v-icon(x-large color="black") stars 
+										v-flex(xs6)
+											span.display-1.black--text {{ tutor.trustPoint }}
+						v-card-title
+							span
+								v-layout(row wrap)
+									strong.orange--text.headline {{ tutor.name }} 
+								v-layout(row wrap)
+									.caption {{ tutor.province }}, {{ tutor.city }}
+						v-card-title
+							.subheading.ellipsis {{ tutor.profileIntro }}
+						v-card-title
+							v-layout(row wrap)
+								span(v-for="course in tutor.courseList")
+									v-chip(color="orange lighten-5") {{ course }}
+						v-card-actions
+							v-flex.md4
+							v-btn.md4.orange--text(flat fluid) Detail
+							v-btn.md4.white--text(fluid color="orange accent-2") Book	
 			
 </template>
 
