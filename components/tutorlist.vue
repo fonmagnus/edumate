@@ -6,7 +6,7 @@
 		v-layout(row wrap)
 			v-flex.xs3(v-for="tutor in tutorList")
 				v-hover
-					v-card.ma-2(slot-scope="{ hover }" class="ma auto")
+					v-card.ma-2(raised slot-scope="{ hover }" class="ma auto")
 						v-img(:src="tutor.photo" height="250px")
 							div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-left(
 								color="orange lighten-5", 
@@ -22,7 +22,7 @@
 						v-card-title
 							span
 								v-layout(row wrap)
-									strong.orange--text.headline {{ tutor.name }} 
+									strong.ellipsis.orange--text.headline {{ tutor.name }} 
 								v-layout(row wrap)
 									.caption {{ tutor.province }}, {{ tutor.city }}
 						v-card-title
