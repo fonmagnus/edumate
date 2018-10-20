@@ -14,10 +14,10 @@
 								@click="")
 								v-container
 									v-layout(row wrap)
-										v-flex(xs4)
-										v-flex(xs2)
+										v-flex(md4)
+										v-flex(md2)
 											v-icon(x-large color="black") stars 
-										v-flex(xs6)
+										v-flex(md6)
 											span.display-1.black--text {{ tutor.trustPoint }}
 						v-card-title
 							span

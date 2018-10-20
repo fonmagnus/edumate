@@ -277,11 +277,49 @@ export default {
 		},
 		searchTutor() {
 			this.displayTutor = true;
-			this.fetchTutorList();
+			this.tutorList = this.fetchTutorList();
 			this.searchingTutor = false;
 		},
 		fetchTutorList(){
-
+			let fetchResult = [];
+			for(var i = 0; i < this.tutorList.length; i++) {
+				if(this.tutorFilter.grade &&
+					!this.inArray(this.tutorFilter.grade, this.tutorList[i].grade)) {
+					continue;
+				}
+				if(this.tutorFilter.sessionType && 
+					!this.inArray(this.tutorFilter.sessionType, this.tutorList[i].sessionType)) {
+					continue;
+				}
+				if(this.tutorList[i].upperBoundFee < this.feeRange[0] || 
+					 this.tutorList[i].lowerBoundFee > this.feeRange[1]) {
+					continue;
+				}
+				if(this.tutorFilter.courseList && 
+					 !this.inArrayRange(this.tutorFilter.courseList, this.tutorList[i].courseList)){
+					continue;
+				}
+				if(this.tutorFilter.province && 
+					 this.tutorFilter.province !== this.tutorList[i].province) {
+					continue;
+				}
+				fetchResult.push(this.tutorList[i]);	
+			}
+			return fetchResult;
+		},
+		inArray(obj, arr) {
+			for(var i = 0; i < arr.length; i++) {
+				if(obj == arr[i]) return true;
+			}
+			return false;
+		},
+		inArrayRange(arrA, arrB) {
+			for(var i = 0; i < arrA.length; i++) {
+				for(var j = 0; j < arrB.length; j++) {
+					if(arrA[i] === arrB[j]) return true;
+				}
+			}
+			return false;
 		},
 	},
 };
