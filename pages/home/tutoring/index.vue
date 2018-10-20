@@ -36,15 +36,15 @@ export default {
 	},
 	methods: {
 		gotoElementary() {
-			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'elementary'});
+			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'Elementary'});
 			this.$router.push('/home/tutoring/search');
 		},
 		gotoJuniorHighSchool() {
-			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'junior_high_school'});
+			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'Junior High School'});
 			this.$router.push('/home/tutoring/search');
 		},
 		gotoSeniorHighSchool() {
-			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'senior_high_school'});
+			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'Senior High School'});
 			this.$router.push('/home/tutoring/search');
 		},
 	},
