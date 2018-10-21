@@ -24,7 +24,7 @@
 								v-layout(row wrap)
 									strong.ellipsis.orange--text.headline {{ tutor.name }} 
 								v-layout(row wrap)
-									.caption {{ tutor.province }}, {{ tutor.city }}
+									.caption {{ tutor.city }}, {{ tutor.province }}
 						v-card-title
 							.subheading.ellipsis {{ tutor.profileIntro }}
 						v-card-title
@@ -66,7 +66,6 @@ export default {
 	data() {
 		return {
 			showTutorInfo: false,
-			selectedTutor: {},
 		};
 	},
 	computed: {
@@ -76,27 +75,8 @@ export default {
 	},
 	methods: {
 		openTutorInfo(tutor) {
-			this.selectedTutor = tutor;
-			this.showTutorInfo = true;
-		},
-		formatter(money) {
-			let result = '';
-			let cur = 0;
-			while(money > 0) {
-				if(cur === 3) {
-					result += '.';
-					cur=0;
-				}
-
-				let digit = money%10;
-				result += digit.toString();
-				money /= 10;
-				money = Math.floor(money);
-				cur++;
-			}
-
-			result = result.split("").reverse().join("");
-			return result;
+			this.$store.dispatch('tutor/setSelectedTutor', tutor);
+			this.$router.push('/tutoring/detail');
 		},
 	},
 }

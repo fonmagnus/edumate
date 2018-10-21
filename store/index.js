@@ -8,7 +8,6 @@ const modules = {
   tutor,
 };
 
-
 const createStore = () =>
   new Vuex.Store({
     modules,

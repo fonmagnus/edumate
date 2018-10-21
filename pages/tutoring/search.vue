@@ -185,7 +185,6 @@ export default {
 			return fetchResult;
 		},
 		inArray(obj, arr) {
-			console.log(obj, arr);
 			for(var i = 0; i < arr.length; i++) {
 				if(obj === arr[i]) return true;
 			}

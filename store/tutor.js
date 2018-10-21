@@ -140,7 +140,6 @@ const mutations = {
 
 const actions = {
 	setTutorList({ commit }, data) {
-		console.log(data);
 		commit('setTutorList', data);
 	},
 	setSelectedTutor({ commit }, data) {
