@@ -14,6 +14,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'You know who I am',
 			trustPoint: 2436,
+			discloseFee: false,
+			achievements: [
+				{
+					title: 'Research in Jarvis Technology',
+					award: 'Nobel Prize',
+					year: '2015',
+				},
+			],
 		},
 		{
 			id: 2,
@@ -29,6 +37,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'Teaching music, dancing, and rapping is my passion and I love to help you grow',
 			trustPoint: 1131,
+			discloseFee: false,
+			achievements: [
+				{
+					title: 'Dance Competition by Song-Park',
+					award: 'Best Woman Dancer',
+					year: '2016',
+				},
+			],
 		},
 		{
 			id: 3,
@@ -44,6 +60,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'An enviromentalist with a dream to make this world better',
 			trustPoint: 769,
+			discloseFee: true,
+			achievements: [
+				{
+					title: '',
+					award: '',
+					year: '',
+				},
+			],
 		},
 		{
 			id: 4,
@@ -59,6 +83,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'Dreamer, Teacher, and Love Evangelist',
 			trustPoint: 819,
+			discloseFee: true,
+			achievements: [
+				{
+					title: '',
+					award: '',
+					year: '',
+				},
+			],
 		},
 		{
 			id: 5,
@@ -74,6 +106,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'Digital Enthusiast',
 			trustPoint: 18,
+			discloseFee: false,
+			achievements: [
+				{
+					title: '',
+					award: '',
+					year: '',
+				},
+			],
 		},
 		{
 			id: 6,
@@ -89,6 +129,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'Keeping my students at their very best',
 			trustPoint: 78,
+			discloseFee: true,
+			achievements: [
+				{
+					title: '',
+					award: '',
+					year: '',
+				},
+			],
 		},
 		{
 			id: 7,
@@ -104,6 +152,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: `Hey if you're interested to become better person in school, don't hesitate to contact`,
 			trustPoint: 55,
+			discloseFee: false,
+			achievements: [
+				{
+					title: '',
+					award: '',
+					year: '',
+				},
+			],
 		},
 		{
 			id: 8,
@@ -119,6 +175,14 @@ const states = () => ({
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'Happy teacher ~~',
 			trustPoint: 122,
+			discloseFee: false,
+			achievements: [
+				{
+					title: '',
+					award: '',
+					year: '',
+				},
+			],
 		},
 	],
 	selectedTutor: {},

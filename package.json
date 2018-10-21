@@ -17,6 +17,7 @@
     "cross-env": "^5.2.0",
     "nuxt": "^2.0.0",
     "vue-social-sharing": "^2.3.3",
+    "vue-youtube-embed": "^2.2.1",
     "vuetify": "^1.2.4"
   },
   "devDependencies": {
