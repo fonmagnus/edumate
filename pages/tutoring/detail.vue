@@ -13,7 +13,7 @@
 								v-layout(row wrap)
 									v-flex.md4
 										v-card.md4.ma-5
-											v-img(:src="selectedTutor.photo" height="300px")
+											v-img(:src="selectedTutor.photo" height="330px")
 									v-flex.md6
 										v-layout(row wrap)
 											v-flex.md12
@@ -24,6 +24,10 @@
 										v-layout(row wrap)
 											v-flex.md12.mx-3
 												.body-2.font-weight-light Age : {{ selectedTutor.age }}
+										v-layout(row wrap)
+											v-flex.md12.mx-3
+												.body-1.mb-1.font-weight-light {{ selectedTutor.profileIntro }}
+										br
 										br
 										.subheading.mx-3.mb-1 Courses that I'm currently teaching :
 										v-layout(row wrap)
@@ -37,6 +41,10 @@
 										br
 										span.mx-3.mb-1 Grade Level : 
 										div.mx-4.orange--text.font-weight-medium(v-for="grade in selectedTutor.grade") {{ grade }}
+									v-flex.md2.mt-5
+										v-layout.mt-2(row wrap)
+											.caption Available for : 
+										div.body-1.font-weight-light(v-for="sessionType in selectedTutor.sessionType") {{ sessionType }}
 								v-layout(row wrap)
 									v-flex.md12.mx-5
 										.title My Achievements
@@ -49,6 +57,17 @@
 												td.text-xs-left {{ props.item.title }}
 												td.text-xs-left {{ props.item.award }}
 												td.text-xs-left {{ props.item.year }}
+								br
+								v-layout(row wrap)
+									v-flex.md12.mx-5.mb-4
+										.title My Teaching Video
+								v-layout.ml-5.mb-5(row wrap)
+									v-flex.md6.mb-3(v-for="vid in selectedTutor.videos")
+										youtube(:videoId="vid.source"
+														player-width="95%",
+														player-height="300")
+									v-flex.md12.mx-5.text-xs-center.mb-5(v-if="!videoAvailable()")
+										.subheading No available videos
 										
 </template>
 
@@ -76,6 +95,15 @@ export default {
 		}
 	},
 	methods: {
+		videoAvailable() {
+			if(this.selectedTutor.videos == null) {
+				return false;
+			}
+			if(this.selectedTutor.videos.length > 0) {
+				return true;
+			}
+			return false;
+		},
 		formatter(money) {
 			let result = '';
 			let cur = 0;

@@ -1,7 +1,7 @@
 <template lang="pug">
 	v-container
 		v-layout(row wrap)
-			v-flex.pa-4(xs12 class="text-xs-center gray--text orange lighten-3")
+			v-flex.pa-4.text-xs-center(xs12)
 				.display-2 What's Your Grade?
 		br
 		v-layout(row wrap class="orange lighten-3")

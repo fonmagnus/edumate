@@ -18,9 +18,9 @@
 				v-flex.xs6
 					v-btn(:disabled="true" flat)
 				v-flex.xs3
-					v-btn.orange--text(flat, @click="hideLoginDialog") Cancel
+					v-btn.orange--text.subheading(flat, @click="hideLoginDialog") Cancel
 				v-flex.xs3
-					v-btn.orange.accent-2.white--text(flat, @click="validateUser") Login
+					v-btn.orange.accent-2.white--text.subheading(flat, @click="validateUser") Login
 </template>
 
 

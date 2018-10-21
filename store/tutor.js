@@ -3,7 +3,7 @@ const states = () => ({
 		{
 			id: 1,
 			name: 'Robert Downey Junior',
-			age: 56,
+			age: 52,
 			photo: 'https://i.pinimg.com/originals/b1/ac/a1/b1aca1599b009b2299c81f1f2422dabc.jpg',
 			courseList: ['Math', 'Physics'],
 			province: 'Jakarta',
@@ -21,6 +21,13 @@ const states = () => ({
 					award: 'Nobel Prize',
 					year: '2015',
 				},
+			],
+			videos: [
+				{
+					title: 'My appearance',
+					type: 'intro',
+					source: 'zB2vhSZSweA',
+				}
 			],
 		},
 		{
@@ -42,7 +49,29 @@ const states = () => ({
 				{
 					title: 'Dance Competition by Song-Park',
 					award: 'Best Woman Dancer',
-					year: '2016',
+					year: '2018',
+				},
+				{
+					title: 'Seoul Dance Concert',
+					award: '1st Favourite Dance Group',
+					year: '2017',
+				},
+			],
+			videos: [
+				{
+					title: 'Best Dancer',
+					type: 'intro',
+					source: 'z3-eGTgQxTY',
+				},
+				{
+					title: 'Hidden Talent',
+					type: 'intro',
+					source: 'mexI1rEbi2Y',
+				},
+				{
+					title: 'Ddu du ddu du MV',
+					type: 'intro',
+					source: 'IHNzOHi8sJs',
 				},
 			],
 		},
@@ -68,6 +97,13 @@ const states = () => ({
 					year: '',
 				},
 			],
+			videos: [
+				// {
+				// 	title: '',
+				// 	type: '',
+				// 	source: '',
+				// },
+			],
 		},
 		{
 			id: 4,
@@ -90,6 +126,13 @@ const states = () => ({
 					award: '',
 					year: '',
 				},
+			],
+			videos: [
+				// {
+				// 	title: '',
+				// 	type: '',
+				// 	source: '',
+				// },
 			],
 		},
 		{
@@ -114,6 +157,13 @@ const states = () => ({
 					year: '',
 				},
 			],
+			videos: [
+				// {
+				// 	title: '',
+				// 	type: '',
+				// 	source: '',
+				// },
+			],
 		},
 		{
 			id: 6,
@@ -136,6 +186,13 @@ const states = () => ({
 					award: '',
 					year: '',
 				},
+			],
+			videos: [
+				// {
+				// 	title: '',
+				// 	type: '',
+				// 	source: '',
+				// },
 			],
 		},
 		{
@@ -160,6 +217,13 @@ const states = () => ({
 					year: '',
 				},
 			],
+			videos: [
+				// {
+				// 	title: '',
+				// 	type: '',
+				// 	source: '',
+				// },
+			],
 		},
 		{
 			id: 8,
@@ -182,6 +246,13 @@ const states = () => ({
 					award: '',
 					year: '',
 				},
+			],
+			videos: [
+				// {
+				// 	title: '',
+				// 	type: '',
+				// 	source: '',
+				// },
 			],
 		},
 	],

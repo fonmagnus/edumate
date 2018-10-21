@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 import colors from 'vuetify/es5/util/colors'
 import 'font-awesome/css/font-awesome.min.css'
 
@@ -19,3 +20,4 @@ Vue.use(Vuetify, {
 });
 
 Vue.use(SocialSharing);
+Vue.use(VueYouTubeEmbed, { global: true, componentId: "youtube" })
