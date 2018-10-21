@@ -18,6 +18,7 @@ const states = () => ({
 			isOnline: false,
 			schedules: [
 				{
+					id: 1,
 					day: 'Monday',
 					timeStart: '15.00',
 					timeEnd: '17.00',
@@ -26,6 +27,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 2,
 					day: 'Monday',
 					timeStart: '19.00',
 					timeEnd: '21.00',
@@ -34,6 +36,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 3,
 					day: 'Wednesday',
 					timeStart: '15.00',
 					timeEnd: '17.00',
@@ -79,6 +82,7 @@ const states = () => ({
 			isOnline: true,
 			schedules: [
 				{
+					id: 1,
 					day: 'Monday',
 					timeStart: '17.30',
 					timeEnd: '19.30',
@@ -87,6 +91,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 2,
 					day: 'Monday',
 					timeStart: '20.00',
 					timeEnd: '22.00',
@@ -95,6 +100,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 3,
 					day: 'Tuesday',
 					timeStart: '17.30',
 					timeEnd: '19.30',
@@ -104,6 +110,7 @@ const states = () => ({
 					isAvailable: false,
 				},
 				{
+					id: 4,
 					day: 'Tuesday',
 					timeStart: '20.00',
 					timeEnd: '22.00',
@@ -112,6 +119,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 5,
 					day: 'Wednesday',
 					timeStart: '17.30',
 					timeEnd: '19.30',
@@ -120,6 +128,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 6,
 					day: 'Wednesday',
 					timeStart: '20.00',
 					timeEnd: '22.00',
@@ -128,6 +137,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 7,
 					day: 'Thursday',
 					timeStart: '17.30',
 					timeEnd: '19.30',
@@ -136,6 +146,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 8,
 					day: 'Thursday',
 					timeStart: '20.00',
 					timeEnd: '22.00',
@@ -144,6 +155,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 9,
 					day: 'Friday',
 					timeStart: '17.30',
 					timeEnd: '19.30',
@@ -152,6 +164,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 10,
 					day: 'Friday',
 					timeStart: '20.00',
 					timeEnd: '22.00',
@@ -160,6 +173,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 11,
 					day: 'Saturday',
 					timeStart: '17.30',
 					timeEnd: '19.30',
@@ -168,6 +182,7 @@ const states = () => ({
 					maxQuota: 5,
 				},
 				{
+					id: 12,
 					day: 'Saturday',
 					timeStart: '20.00',
 					timeEnd: '22.00',
@@ -222,11 +237,40 @@ const states = () => ({
 			trustPoint: 769,
 			discloseFee: true,
 			isOnline: true,
+			schedules: [
+				{
+					id: 1,
+					day: 'Thursday',
+					timeStart: '14.00',
+					timeEnd: '17.00',
+					sessionType: 'Onsite',
+					currentQuota: 1,
+					maxQuota: 5,
+				},
+				{
+					id: 2,
+					day: 'Friday',
+					timeStart: '14.00',
+					timeEnd: '17.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 5,
+				},
+				{
+					id: 3,
+					day: 'Saturday',
+					timeStart: '14.00',
+					timeEnd: '17.00',
+					sessionType: 'Onsite',
+					currentQuota: 10,
+					maxQuota: 10,
+				},
+			],
 			achievements: [
 				{
-					title: '',
-					award: '',
-					year: '',
+					title: 'Oscar Winner',
+					award: 'The Revenant Movie',
+					year: '2015',
 				},
 			],
 			videos: [
@@ -253,11 +297,64 @@ const states = () => ({
 			trustPoint: 819,
 			discloseFee: true,
 			isOnline: false,
+			schedules: [
+				{
+					id: 1,
+					day: 'Monday',
+					timeStart: '10.00',
+					timeEnd: '14.00',
+					sessionType: 'Onsite',
+					currentQuota: 7,
+					maxQuota: 8,
+				},
+				{
+					id: 2,
+					day: 'Monday',
+					timeStart: '15.00',
+					timeEnd: '19.00',
+					sessionType: 'Onsite',
+					currentQuota: 5,
+					maxQuota: 5,
+				},
+				{
+					id: 3,
+					day: 'Friday',
+					timeStart: '10.00',
+					timeEnd: '14.00',
+					sessionType: 'Onsite',
+					currentQuota: 1,
+					maxQuota: 5,
+				},
+				{
+					id: 4,
+					day: 'Friday',
+					timeStart: '15.00',
+					timeEnd: '19.00',
+					sessionType: 'Onsite',
+					currentQuota: 10,
+					maxQuota: 10,
+				},
+			],
 			achievements: [
 				{
-					title: '',
-					award: '',
-					year: '',
+					title: 'SCTX Awards',
+					award: 'Best Singer',
+					year: '2017',
+				},
+				{
+					title: 'Kartini Muda Awards',
+					award: 'Best Singer',
+					year: '2017',
+				},
+				{
+					title: 'Panaxonik Award Festival',
+					award: 'Golden Globe',
+					year: '2018',
+				},
+				{
+					title: 'Mothers Day',
+					award: 'Top 10 Most Influential Mom',
+					year: '2018',
 				},
 			],
 			videos: [
@@ -284,12 +381,48 @@ const states = () => ({
 			trustPoint: 18,
 			discloseFee: false,
 			isOnline: false,
-			achievements: [
+			schedules: [
 				{
-					title: '',
-					award: '',
-					year: '',
+					id: 1,
+					day: 'Monday',
+					timeStart: '17.00',
+					timeEnd: '19.00',
+					sessionType: 'Onsite',
+					currentQuota: 3,
+					maxQuota: 5,
 				},
+				{
+					id: 2,
+					day: 'Monday',
+					timeStart: '19.00',
+					timeEnd: '21.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 5,
+				},
+				{
+					id: 3,
+					day: 'Wednesday',
+					timeStart: '15.00',
+					timeEnd: '17.00',
+					sessionType: 'Onsite',
+					currentQuota: 3,
+					maxQuota: 3,
+					isAvailable: false,
+				},
+				{
+					id: 4,
+					day: 'Wednesday',
+					timeStart: '17.00',
+					timeEnd: '19.00',
+					sessionType: 'Onsite',
+					currentQuota: 2,
+					maxQuota: 2,
+					isAvailable: false,
+				},
+			],
+			achievements: [
+				
 			],
 			videos: [
 				// {
@@ -315,11 +448,41 @@ const states = () => ({
 			trustPoint: 78,
 			discloseFee: true,
 			isOnline: true,
+			schedules: [
+				{
+					id: 1,
+					day: 'Friday',
+					timeStart: '10.00',
+					timeEnd: '13.00',
+					sessionType: 'Onsite',
+					currentQuota: 2,
+					maxQuota: 2,
+				},
+				{
+					id: 2,
+					day: 'Friday',
+					timeStart: '14.00',
+					timeEnd: '17.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 4,
+				},
+				{
+					id: 3,
+					day: 'Friday',
+					timeStart: '18.00',
+					timeEnd: '21.00',
+					sessionType: 'Onsite',
+					currentQuota: 3,
+					maxQuota: 3,
+					isAvailable: false,
+				},
+			],
 			achievements: [
 				{
-					title: '',
-					award: '',
-					year: '',
+					title: 'Indian Programming Competition',
+					award: 'Finalist',
+					year: '2013',
 				},
 			],
 			videos: [
@@ -346,11 +509,41 @@ const states = () => ({
 			trustPoint: 55,
 			discloseFee: false,
 			isOnline: true,
+			schedules: [
+				{
+					id: 1,
+					day: 'Tuesday',
+					timeStart: '18.00',
+					timeEnd: '20.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 5,
+				},
+				{
+					id: 2,
+					day: 'Wednesday',
+					timeStart: '18.00',
+					timeEnd: '20.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 5,
+				},
+				{
+					id: 3,
+					day: 'Friday',
+					timeStart: '18.00',
+					timeEnd: '20.00',
+					sessionType: 'Onsite',
+					currentQuota: 5,
+					maxQuota: 5,
+					isAvailable: false,
+				},
+			],
 			achievements: [
 				{
-					title: '',
-					award: '',
-					year: '',
+					title: 'Instakilogram',
+					award: 'Influencer of the Month',
+					year: '2016',
 				},
 			],
 			videos: [
@@ -369,19 +562,59 @@ const states = () => ({
 			courseList: ['Math'],
 			province: 'Jakarta',
 			city: 'Jakarta Timur',
-			lowerBoundFee: 500000,
-			upperBoundFee: 750000,
+			lowerBoundFee: 2000000,
+			upperBoundFee: 2500000,
 			grade: ['Elementary'],
 			sessionType: ['Online', 'Onsite'],
 			profileIntro: 'Happy teacher ~~',
 			trustPoint: 122,
 			discloseFee: false,
 			isOnline: false,
+			schedules: [
+				{
+					id: 1,
+					day: 'Saturday',
+					timeStart: '11.00',
+					timeEnd: '12.00',
+					sessionType: 'Onsite',
+					currentQuota: 3,
+					maxQuota: 3,
+				},
+				{
+					id: 2,
+					day: 'Saturday',
+					timeStart: '13.00',
+					timeEnd: '14.00',
+					sessionType: 'Onsite',
+					currentQuota: 1,
+					maxQuota: 3,
+				},
+				{
+					id: 3,
+					day: 'Saturday',
+					timeStart: '15.00',
+					timeEnd: '16.00',
+					sessionType: 'Onsite',
+					currentQuota: 2,
+					maxQuota: 3,
+					isAvailable: false,
+				},
+			],
 			achievements: [
 				{
-					title: '',
-					award: '',
-					year: '',
+					title: 'Japanese Mathematics Contest',
+					award: 'Semi-Finalist',
+					year: '2016',
+				},
+				{
+					title: 'Japanese Mathematics Contest',
+					award: 'Finalist',
+					year: '2017',
+				},
+				{
+					title: 'Japanese Mathematics Contest',
+					award: '1st Champion',
+					year: '2018',
 				},
 			],
 			videos: [

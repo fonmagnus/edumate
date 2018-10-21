@@ -76,17 +76,50 @@
 									v-flex.md12.mx-5
 										.title My Schedule
 								v-layout(row wrap).mt-3
-									v-flex.md12.mx-5.mt-3
+									v-flex.md12.mx-5.mt-1
 										v-data-table(:headers="scheduleHeaders"
-																:items="selectedTutor.schedules")
+																:items="selectedTutor.schedules"
+																width="100%")
 											template(slot="items", slot-scope="props")
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.day }}
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.timeStart }} - {{ props.item.timeEnd }}
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.sessionType }}
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.currentQuota }} / {{ props.item.maxQuota }}
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.currentQuota === props.item.maxQuota ? 'Not Available' : 'Available' }}
-												td.text-xs-left
-													v-btn.body-1.capitalize.white--text(color="orange accent-3" :disabled="props.item.currentQuota === props.item.maxQuota") Book Now
+												td.text-xs-center.pt-3.pl-5
+													v-checkbox(:disabled="props.item.currentQuota === props.item.maxQuota" 
+																		:input-value="isChecked(props.item.id)" 
+																		color="orange"
+																		@click.native="toggleSchedule(props.item)")
+								br
+								v-layout(row wrap)
+									v-flex.md8
+									v-flex.md3.text-xs-right
+										v-dialog(v-model="showBookingConfirmation", width="500")
+											v-btn.subheading.capitalize.white--text(color="orange accent-3" 
+												:disabled="selectedSchedule.length === 0"
+												slot="activator") Book Now
+											v-card
+												v-card-title.headline.orange.accent-3.white--text Booking Confirmation
+												v-card-text.body-1 You're about to book these following schedules : 
+												v-container
+													v-layout(row wrap v-for="schedule in selectedSchedule")
+														v-flex.xs3.subheading
+															span {{ schedule.day }}
+														v-flex.xs3.subheading
+															span {{ schedule.timeStart }} - {{ schedule.timeEnd }}
+														v-flex.xs3.subheading
+															span {{ schedule.sessionType }}
+												v-container
+													v-layout(row wrap)
+														v-flex.xs4.body-1 Are You Sure?
+													v-layout(row wrap)
+														v-flex.xs6
+														v-flex.xs3
+															v-btn.body-1.orange--text.text-xs-center(flat @click="showBookingConfirmation = false") Cancel
+														v-flex.xs3
+															v-btn.body-1.white--text.text-xs-center(color="orange accent-3") Confirm
+
 								//- br
 								//- v-layout(row wrap)
 								//- 	v-flex.md12.mx-5.mt-3
@@ -115,6 +148,8 @@ import { mapGetters } from 'vuex';
 export default {
 	data() {
 		return {
+			selectedSchedule: [],
+			showBookingConfirmation: false,
 			achievementHeaders: [
 				{ text: 'Title', align: 'left', sortable: false, value: 'title'},
 				{ text: 'Award', align: 'left', sortable: false, value: 'title'},
@@ -139,7 +174,18 @@ export default {
 		if(this.selectedTutor.name == null) {
 			this.$router.push('/tutoring/search');
 		}
+		window.smoothscroll = () => {
+      let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(window.smoothscroll)
+        window.scrollTo(0, Math.floor(currentScroll - (currentScroll / 5)))
+      }
+    }
+    window.addEventListener('scroll', this.catchScroll)
 	},
+	destroyed () {
+    window.removeEventListener('scroll', this.catchScroll)
+  },
 	methods: {
 		videoAvailable() {
 			if(this.selectedTutor.videos == null) {
@@ -178,6 +224,34 @@ export default {
 			result = result.split("").reverse().join("");
 			return result;
 		},
+		isChecked(id) {
+			for(let i = 0; i < this.selectedSchedule.length; i++) {
+				if(this.selectedSchedule[i].id === id) {
+					return true;
+				}
+			}
+			return false;
+		},
+		toggleSchedule(schedule) {
+			let addSchedule = true;
+			this.selectedSchedule.forEach(item => {
+				if (item.id === schedule.id) { addSchedule = false; }
+			});
+
+			if(addSchedule) {
+				this.selectedSchedule.push(schedule);
+			}
+			else {
+				this.selectedSchedule = this.selectedSchedule.filter(filteredItem => filteredItem.id !== schedule.id);
+			}
+		},
+		catchScroll () {
+      this.visible = (window.pageYOffset > parseInt(this.visibleoffset))
+		},
+		backToTop () {
+      window.smoothscroll()
+      this.$emit('scrolled');
+    },
 	},
 }
 </script>
