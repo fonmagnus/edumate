@@ -43,6 +43,8 @@
 										div.mx-4.orange--text.font-weight-medium(v-for="grade in selectedTutor.grade") {{ grade }}
 									v-flex.md2.mt-5
 										v-layout.mt-2(row wrap)
+											v-btn.white--text(color="orange accent-3") Book Tutor
+										v-layout.mt-2(row wrap)
 											.caption Available for : 
 										div.body-1.font-weight-light(v-for="sessionType in selectedTutor.sessionType") {{ sessionType }}
 								v-layout(row wrap)
@@ -59,15 +61,23 @@
 												td.text-xs-left {{ props.item.year }}
 								br
 								v-layout(row wrap)
-									v-flex.md12.mx-5.mb-4
+									v-flex.md12.mx-5
 										.title My Teaching Video
-								v-layout.ml-5.mb-5(row wrap)
-									v-flex.md6.mb-3(v-for="vid in selectedTutor.videos")
+								v-layout.ml-5(row wrap)
+									v-flex.md6.mt-3(v-for="vid in selectedTutor.videos")
 										youtube(:videoId="vid.source"
 														player-width="95%",
 														player-height="300")
-									v-flex.md12.mx-5.text-xs-center.mb-5(v-if="!videoAvailable()")
+									v-flex.md12.mx-5.mt-3.text-xs-center.mb-5(v-if="!videoAvailable()")
 										.subheading No available videos
+								br
+								v-layout(row wrap)
+									v-flex.md12.mx-5
+										.title Testimony from Students
+								v-layout.ml-5.mb-5(row wrap)
+									v-flex.md6.mt-3
+									v-flex.md12.mx-5.mt-3.text-xs-center.mb-5(v-if="!testimonyAvailable()")
+										.subheading No available testimony
 										
 </template>
 
@@ -100,6 +110,15 @@ export default {
 				return false;
 			}
 			if(this.selectedTutor.videos.length > 0) {
+				return true;
+			}
+			return false;
+		},
+		testimonyAvailable() {
+			if(this.selectedTutor.testimonies == null) {
+				return false;
+			}
+			if(this.selectedTutor.testimonies.length > 0) {
 				return true;
 			}
 			return false;
