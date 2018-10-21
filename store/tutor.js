@@ -15,6 +15,34 @@ const states = () => ({
 			profileIntro: 'You know who I am',
 			trustPoint: 2436,
 			discloseFee: false,
+			isOnline: false,
+			schedules: [
+				{
+					day: 'Monday',
+					timeStart: '15.00',
+					timeEnd: '17.00',
+					sessionType: 'Onsite',
+					currentQuota: 3,
+					maxQuota: 5,
+				},
+				{
+					day: 'Monday',
+					timeStart: '19.00',
+					timeEnd: '21.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 5,
+				},
+				{
+					day: 'Wednesday',
+					timeStart: '15.00',
+					timeEnd: '17.00',
+					sessionType: 'Onsite',
+					currentQuota: 5,
+					maxQuota: 5,
+					isAvailable: false,
+				},
+			],
 			achievements: [
 				{
 					title: 'Research in Jarvis Technology',
@@ -30,7 +58,7 @@ const states = () => ({
 				}
 			],
 			testimonies: [
-
+				
 			],
 		},
 		{
@@ -48,6 +76,106 @@ const states = () => ({
 			profileIntro: 'Teaching music, dancing, and rapping is my passion and I love to help you grow',
 			trustPoint: 1131,
 			discloseFee: false,
+			isOnline: true,
+			schedules: [
+				{
+					day: 'Monday',
+					timeStart: '17.30',
+					timeEnd: '19.30',
+					sessionType: 'Onsite',
+					currentQuota: 5,
+					maxQuota: 5,
+				},
+				{
+					day: 'Monday',
+					timeStart: '20.00',
+					timeEnd: '22.00',
+					sessionType: 'Onsite',
+					currentQuota: 2,
+					maxQuota: 5,
+				},
+				{
+					day: 'Tuesday',
+					timeStart: '17.30',
+					timeEnd: '19.30',
+					sessionType: 'Onsite',
+					currentQuota: 0,
+					maxQuota: 5,
+					isAvailable: false,
+				},
+				{
+					day: 'Tuesday',
+					timeStart: '20.00',
+					timeEnd: '22.00',
+					sessionType: 'Onsite',
+					currentQuota: 2,
+					maxQuota: 5,
+				},
+				{
+					day: 'Wednesday',
+					timeStart: '17.30',
+					timeEnd: '19.30',
+					sessionType: 'Onsite',
+					currentQuota: 5,
+					maxQuota: 5,
+				},
+				{
+					day: 'Wednesday',
+					timeStart: '20.00',
+					timeEnd: '22.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 5,
+				},
+				{
+					day: 'Thursday',
+					timeStart: '17.30',
+					timeEnd: '19.30',
+					sessionType: 'Onsite',
+					currentQuota: 5,
+					maxQuota: 5,
+				},
+				{
+					day: 'Thursday',
+					timeStart: '20.00',
+					timeEnd: '22.00',
+					sessionType: 'Onsite',
+					currentQuota: 3,
+					maxQuota: 5,
+				},
+				{
+					day: 'Friday',
+					timeStart: '17.30',
+					timeEnd: '19.30',
+					sessionType: 'Onsite',
+					currentQuota: 2,
+					maxQuota: 5,
+				},
+				{
+					day: 'Friday',
+					timeStart: '20.00',
+					timeEnd: '22.00',
+					sessionType: 'Onsite',
+					currentQuota: 4,
+					maxQuota: 5,
+				},
+				{
+					day: 'Saturday',
+					timeStart: '17.30',
+					timeEnd: '19.30',
+					sessionType: 'Onsite',
+					currentQuota: 5,
+					maxQuota: 5,
+				},
+				{
+					day: 'Saturday',
+					timeStart: '20.00',
+					timeEnd: '22.00',
+					sessionType: 'Onsite',
+					currentQuota: 1,
+					maxQuota: 5,
+				},
+			],
 			achievements: [
 				{
 					title: 'Dance Competition by Song-Park',
@@ -93,6 +221,7 @@ const states = () => ({
 			profileIntro: 'An enviromentalist with a dream to make this world better',
 			trustPoint: 769,
 			discloseFee: true,
+			isOnline: true,
 			achievements: [
 				{
 					title: '',
@@ -123,6 +252,7 @@ const states = () => ({
 			profileIntro: 'Dreamer, Teacher, and Love Evangelist',
 			trustPoint: 819,
 			discloseFee: true,
+			isOnline: false,
 			achievements: [
 				{
 					title: '',
@@ -153,6 +283,7 @@ const states = () => ({
 			profileIntro: 'Digital Enthusiast',
 			trustPoint: 18,
 			discloseFee: false,
+			isOnline: false,
 			achievements: [
 				{
 					title: '',
@@ -183,6 +314,7 @@ const states = () => ({
 			profileIntro: 'Keeping my students at their very best',
 			trustPoint: 78,
 			discloseFee: true,
+			isOnline: true,
 			achievements: [
 				{
 					title: '',
@@ -213,6 +345,7 @@ const states = () => ({
 			profileIntro: `Hey if you're interested to become better person in school, don't hesitate to contact`,
 			trustPoint: 55,
 			discloseFee: false,
+			isOnline: true,
 			achievements: [
 				{
 					title: '',
@@ -243,6 +376,7 @@ const states = () => ({
 			profileIntro: 'Happy teacher ~~',
 			trustPoint: 122,
 			discloseFee: false,
+			isOnline: false,
 			achievements: [
 				{
 					title: '',

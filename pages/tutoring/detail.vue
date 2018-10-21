@@ -9,21 +9,31 @@
 					v-layout(row wrap)
 						v-flex.md2
 						v-flex.md8.ma-3
-							v-card(fluid color="white")
+							v-card.pt-2.pl-2(fluid color="white")
 								v-layout(row wrap)
 									v-flex.md4
-										v-card.md4.ma-5
-											v-img(:src="selectedTutor.photo" height="330px")
+										v-layout(row wrap)
+											v-flex.md12
+												v-card.md4.mt-4.ml-4.mr-3
+													v-img(:src="selectedTutor.photo" height="270px" width="100%")
+										v-layout(row wrap)
+											v-flex.xs12.text-xs-center
+												v-btn.ml-4.mt-4.capitalize(round width="100%" flat outline)
+													v-icon forum
+													span.body-2.font-weight.light.pl-2.capitalize Chat
+													span.pl-2 
+														v-icon(:color="selectedTutor.isOnline ? 'green' : 'grey'" small) fiber_manual_record
 									v-flex.md6
 										v-layout(row wrap)
 											v-flex.md12
-												.display-1.orange--text.mx-3.mt-5.mb-2.font-weight-medium {{ selectedTutor.name }}
+												.display-1.orange--text.mx-3.mt-4.mb-2.font-weight-medium {{ selectedTutor.name }}
 										v-layout(row wrap)
 											v-flex.md12.mx-3
 												.body-2.font-weight-light {{selectedTutor.city}}, {{ selectedTutor.province }}
 										v-layout(row wrap)
 											v-flex.md12.mx-3
 												.body-2.font-weight-light Age : {{ selectedTutor.age }}
+										br
 										v-layout(row wrap)
 											v-flex.md12.mx-3
 												.body-1.mb-1.font-weight-light {{ selectedTutor.profileIntro }}
@@ -38,16 +48,18 @@
 										span.mx-3.mb-1 Monthly Fee : 
 										span.mb-1.orange--text.font-weight-medium {{ selectedTutor.discloseFee ? 'Negotiable' : `Rp.${formatter(selectedTutor.lowerBoundFee)} - Rp.${formatter(selectedTutor.upperBoundFee)}` }}
 										br
-										br
 										span.mx-3.mb-1 Grade Level : 
 										div.mx-4.orange--text.font-weight-medium(v-for="grade in selectedTutor.grade") {{ grade }}
-									v-flex.md2.mt-5
+									v-flex.md2.mt-4
 										v-layout.mt-2(row wrap)
-											v-btn.white--text(color="orange accent-3") Book Tutor
-										v-layout.mt-2(row wrap)
+											v-icon(x-large color="orange accent-3") stars 
+											span.text-xs-right.display-1 {{ selectedTutor.trustPoint }}
+										//- v-layout.mt-3(row wrap)
 											.caption Available for : 
-										div.body-1.font-weight-light(v-for="sessionType in selectedTutor.sessionType") {{ sessionType }}
-								v-layout(row wrap)
+										//- div.body-1.font-weight-light(v-for="sessionType in selectedTutor.sessionType") {{ sessionType }}
+								br
+								br
+								v-layout(row wrap).mt-3
 									v-flex.md12.mx-5
 										.title My Achievements
 								v-layout(row wrap)
@@ -60,16 +72,32 @@
 												td.text-xs-left {{ props.item.award }}
 												td.text-xs-left {{ props.item.year }}
 								br
-								v-layout(row wrap)
+								v-layout(row wrap).mt-3
 									v-flex.md12.mx-5
-										.title My Teaching Video
-								v-layout.ml-5(row wrap)
-									v-flex.md6.mt-3(v-for="vid in selectedTutor.videos")
-										youtube(:videoId="vid.source"
-														player-width="95%",
-														player-height="300")
-									v-flex.md12.mx-5.mt-3.text-xs-center.mb-5(v-if="!videoAvailable()")
-										.subheading No available videos
+										.title My Schedule
+								v-layout(row wrap).mt-3
+									v-flex.md12.mx-5.mt-3
+										v-data-table(:headers="scheduleHeaders"
+																:items="selectedTutor.schedules")
+											template(slot="items", slot-scope="props")
+												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.day }}
+												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.timeStart }} - {{ props.item.timeEnd }}
+												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.sessionType }}
+												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.currentQuota }} / {{ props.item.maxQuota }}
+												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.currentQuota === props.item.maxQuota ? 'Not Available' : 'Available' }}
+												td.text-xs-left
+													v-btn.body-1.capitalize.white--text(color="orange accent-3" :disabled="props.item.currentQuota === props.item.maxQuota") Book Now
+								//- br
+								//- v-layout(row wrap)
+								//- 	v-flex.md12.mx-5.mt-3
+								//- 		.title My Teaching Video
+								//- v-layout.ml-5(row wrap)
+								//- 	v-flex.md6.mt-3(v-for="vid in selectedTutor.videos")
+								//- 		youtube-media(:videoId="vid.source"
+								//- 						player-width="95%",
+								//- 						player-height="300")
+								//- 	v-flex.md12.mx-5.mt-3.text-xs-center.mb-5(v-if="!videoAvailable()")
+								//- 		.subheading No available videos
 								br
 								v-layout(row wrap)
 									v-flex.md12.mx-5
@@ -91,6 +119,14 @@ export default {
 				{ text: 'Title', align: 'left', sortable: false, value: 'title'},
 				{ text: 'Award', align: 'left', sortable: false, value: 'title'},
 				{ text: 'Year', align: 'left', sortable: false, value: 'title'},
+			],
+			scheduleHeaders: [
+				{ text: 'Day', align: 'left', sortable: false, value: 'title'},
+				{ text: 'Time', align: 'left', sortable: false, value: 'title'},
+				{ text: 'Session Type', align: 'left', sortable: false, value: 'title'},
+				{ text: 'Quota', align: 'left', sortable: false, value: 'title'},
+				{ text: 'Available', align: 'left', sortable: false, value: 'title'},
+				{ text: 'Book Now', align: 'left', sortable: false, value: 'title'},
 			],
 		};
 	},
@@ -145,3 +181,10 @@ export default {
 	},
 }
 </script>
+
+<style scoped>
+	.capitalize{
+		text-transform: capitalize;
+	}
+</style>
+
