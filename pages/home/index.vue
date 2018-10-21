@@ -21,17 +21,25 @@
 								class="gray--text")
 			v-flex(xs6)
 				br
-				span.pl-5.pt-5.mt-5.display-1 Why Edumate?
+				span.ml-5.pt-5.mt-5.display-1 Why Edumate?
 				br
 				br
-				ul.pl-5
-					li
-						span.subheading Easy To Use
-					li 
-						span.subheading Adjust Your Need
-					li 
-						span.subheading Trustowrthy and Capable Tutors
-		br
+				v-container
+					v-layout(row wrap)
+						v-icon.mx-5.mb-4(color="orange accent-3") check_circle
+						span.mb-4.title.font-weight-light Easy To Use
+					v-layout(row wrap)
+						v-icon.mx-5.mb-4(color="orange accent-3") check_circle
+						span.mb-4.title.font-weight-light Adjust Your Need
+					v-layout(row wrap)
+						v-icon.mx-5.mb-4(color="orange accent-3") check_circle
+						span.mb-4.title.font-weight-light Trustowrthy and Capable Tutor
+					v-layout(row wrap)
+						v-icon.mx-5.mb-4(color="orange accent-3") check_circle
+						span.mb-4.title.font-weight-light Learn anywhere
+					v-layout(row wrap)
+						v-icon.mx-5.mb-4(color="orange accent-3") check_circle
+						span.mb-4.title.font-weight-light Build Your Knowledge
 </template>
 
 <script>
