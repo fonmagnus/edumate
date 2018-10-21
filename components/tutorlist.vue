@@ -4,7 +4,7 @@
 			v-flex.md12.text-xs-center.ma-3
 				.display-1 Pick Your Favorite Tutor
 		v-layout(row wrap)
-			v-flex.xs3(v-for="tutor in tutorList")
+			v-flex.xs3(v-for="tutor in filteredTutorList")
 				v-hover
 					v-card.ma-2(raised slot-scope="{ hover }" class="ma auto")
 						v-img(:src="tutor.photo" height="250px")
@@ -32,10 +32,9 @@
 								span(v-for="course in tutor.courseList")
 									v-chip(color="orange lighten-5") {{ course }}
 						v-card-actions
-							v-flex.md4
+							v-flex.md6
 							v-btn.md4.orange--text(flat fluid @click="openTutorInfo(tutor)") Detail
-							v-dialog(v-model="showTutorInfo", width="400")
-								v-card
+								//- v-card
 									v-img(:src="selectedTutor.photo" height="300px")
 									v-card-title
 										span
@@ -59,7 +58,7 @@
 import { mapGetters } from 'vuex';
 export default {
 	props: {
-		tutorList: {
+		filteredTutorList: {
 			type: Array,
 			required: true,
 		},
@@ -96,9 +95,7 @@ export default {
 				cur++;
 			}
 
-			console.log(result);
 			result = result.split("").reverse().join("");
-			console.log(result);
 			return result;
 		},
 	},

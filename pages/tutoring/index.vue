@@ -37,15 +37,15 @@ export default {
 	methods: {
 		gotoElementary() {
 			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'Elementary'});
-			this.$router.push('/home/tutoring/search');
+			this.$router.push('/tutoring/search');
 		},
 		gotoJuniorHighSchool() {
 			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'Junior High School'});
-			this.$router.push('/home/tutoring/search');
+			this.$router.push('/tutoring/search');
 		},
 		gotoSeniorHighSchool() {
 			this.$store.dispatch('tutorfilter/setTutorFilter', {grade: 'Senior High School'});
-			this.$router.push('/home/tutoring/search');
+			this.$router.push('/tutoring/search');
 		},
 	},
 }
