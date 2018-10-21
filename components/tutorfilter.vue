@@ -4,11 +4,9 @@
 			v-layout(row wrap)
 				v-flex.md12.text-md-center
 					span.headline.orange--text Search Your Preferred Tutor
-			br
-			br
-			v-layout(row wrap)
-				v-flex(md4)
-				v-flex(md2)
+			v-layout.mt-3(row wrap)
+				v-flex.md2
+				v-flex(md2).px-1
 					v-autocomplete(
 						:items="gradeList"
 						v-model="tutorFilter.grade"
@@ -18,9 +16,9 @@
 						hide-details
 						label="Grade"
 						color="orange accent-3"
-						box
+						height="30px"
 					)
-				v-flex(md2)
+				v-flex(md2).px-1
 					v-autocomplete(
 						:items="sessionTypes"
 						v-model="tutorFilter.sessionType"
@@ -30,32 +28,10 @@
 						hide-details
 						label="Session Type"
 						color="orange accent-3"
-						box
+						height="30px"
 					)
-			br
-			v-layout(row wrap)
 				v-flex(md4)
-				v-flex(md4)
-					v-subheader Monthly Fee Range
-			v-layout(row wrap)
-				v-flex(md3)
-				v-flex(md1 shrink style="width:60px")
-					v-text-field.text-xs-left(
-						label="Rp."
-						v-model="feeRange[0]"
-						class="mt-0")
-				v-flex(md4).px-3
-					v-range-slider(v-model="feeRange" :max="maxMonthlyFee" :min="minMonthlyFee" :step="feeInterval" color="orange accent-3")
-				v-flex(md1 shrink style="width:60px")
-					v-text-field.text-xs-right(
-						label="Rp."
-						v-model="feeRange[1]"
-						class="mt-0")
-			br
-			v-layout(row wrap)
-				v-flex(md4)
-				v-flex(md4)
-					v-combobox(v-model="tutorFilter.selectedCourseList"
+					v-combobox.px-1(v-model="tutorFilter.selectedCourseList"
 						:items="courseList"
 						label="Select Course You Want to Learn"
 						chips
@@ -68,11 +44,24 @@
 								@input="remove(data.item)"
 								color="orange accent-2")
 								strong {{ data.item }} 
-			br
-			v-layout(row wrap)
-				v-flex(md4)
+			v-layout(row wrap).mt-1
 				v-flex(md2)
-					v-autocomplete(
+				v-flex(md8)
+					v-subheader Monthly Fee Range
+			v-layout(row wrap)
+				v-flex(md2)
+				v-flex(md1 shrink style="width:60px").px-2
+					v-text-field.text-xs-left(
+						label="Rp."
+						v-model="feeRange[0]")
+				v-flex(md2).px-3
+					v-range-slider(v-model="feeRange" :max="maxMonthlyFee" :min="minMonthlyFee" :step="feeInterval" color="orange accent-3")
+				v-flex(md1 shrink style="width:60px").px-2
+					v-text-field.text-xs-right(
+						label="Rp."
+						v-model="feeRange[1]")
+				v-flex(md2)
+					v-autocomplete.mt-1(
 						:items="provinceList"
 						v-model="tutorFilter.province"
 						cache-items
@@ -80,11 +69,11 @@
 						hide-details
 						label="Province"
 						color="orange accent-3"
-						box
 						@change="selectProvince"
+						height="32px"
 					)
 				v-flex(md2)
-					v-text-field(
+					v-text-field.mt-1(
 						:items="cityList"
 						v-model="tutorFilter.city"
 						cache-items
@@ -92,14 +81,12 @@
 						hide-details
 						label="City"
 						color="orange accent-3"
-						box
 						append-icon="place"
 						:disabled="!isSelectedProvince"
+						height="32px"
 					)
-			br
-			br
 			v-layout(row wrap)
-				v-flex.md12.text-md-center
+				v-flex.md12.text-md-center.mt-2
 					v-btn.white--text(color="orange accent-3" round @click="searchTutor") Search Tutor
 </template>
 
@@ -117,10 +104,10 @@ export default {
 		return {
 			gradeList: ['Elementary', 'Junior High School', 'Senior High School'],
 			sessionTypes: ['Onsite', 'Online'],
-			maxMonthlyFee: 15000000,
+			maxMonthlyFee: 10000000,
 			minMonthlyFee: 0,
-			feeInterval: 1,
-			feeRange: [0, 15000000],
+			feeInterval: 100000,
+			feeRange: [500000, 4000000],
 			selectedCourseList: [],
 			courseList: ['Mathematics', 'Physics', 'Biology', 'Chemistry', 'Economic', 'Programming', 'Painting and Drawing', 'Music'],
 			provinceList: ['Jakarta', 'Jawa Barat', 'Jawa Timur', 'Bali'],

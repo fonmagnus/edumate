@@ -16,7 +16,7 @@
 export default {
 	methods: {
 		gotoTutoring() {
-			this.$router.push('/home/tutoring');
+			this.$router.push('/tutoring');
 		},
 	},
 }

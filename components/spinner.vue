@@ -3,13 +3,5 @@
 		:size="100",
 		:width="10",
 		indeterminate,
-		color="orange") {{ value }}
+		color="orange")
 </template>
-
-<script>
-export default {
-	data() {
-		
-	}
-}
-</script>

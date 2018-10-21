@@ -1,9 +1,9 @@
 <template lang="pug">
 	v-container(fluid)
-		v-layout(v-if="!displayTutor", row wrap fluid)
+		v-layout(row wrap fluid)
 			TutorFilter(:filteredTutorList="filteredTutorList",
 									@updateFilteredTutor="updateFilteredTutor")
-		v-layout(row wrap, v-else)
+		v-layout(row wrap)
 			v-flex.md12.text-md-center
 				LoadingSpinner(v-if="searchingTutor", :searchingTutor="searchingTutor")
 				TutorList(v-else, :filteredTutorList="filteredTutorList")
@@ -24,7 +24,7 @@ export default {
 	data() {
 		return {
 			displayTutor: false,
-			searchingTutor: true,
+			searchingTutor: false,
 			filteredTutorList: [],
 		};
 	},
@@ -34,12 +34,15 @@ export default {
 			tutorList: 'tutor/getTutorList',
 		}),
 	},
+	mounted() {
+		this.filteredTutorList = this.tutorList;
+	},
 	methods: {
 		updateFilteredTutor(tutors) {
 			this.filteredTutorList = tutors;
 			this.displayTutor = true;
 			this.searchingTutor = false;
-		}
-	}
+		},
+	},
 };
 </script>

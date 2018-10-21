@@ -6,7 +6,7 @@
 		v-layout(row wrap)
 			v-flex.xs3(v-for="tutor in filteredTutorList")
 				v-hover
-					v-card.ma-2(raised slot-scope="{ hover }" class="ma auto")
+					v-card.mx-2.my-3(raised slot-scope="{ hover }" class="ma auto")
 						v-img(:src="tutor.photo" height="250px")
 							div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-left(
 								color="orange lighten-5", 
@@ -34,22 +34,6 @@
 						v-card-actions
 							v-flex.md6
 							v-btn.md4.orange--text(flat fluid @click="openTutorInfo(tutor)") Detail
-								//- v-card
-									v-img(:src="selectedTutor.photo" height="300px")
-									v-card-title
-										span
-											v-layout(row wrap)
-												strong.ellipsis.orange--text.headline {{ selectedTutor.name }}
-											v-layout(row wrap)
-												.caption Age: {{ selectedTutor.age }}
-											v-layout(row wrap)
-												.caption {{ selectedTutor.province }}, {{ selectedTutor.city }}
-									v-card-title
-										span
-											v-layout(row wrap)
-												.subheading Monthly Fee : 
-											v-layout(row wrap)
-												.subheading Rp. {{ formatter(selectedTutor.lowerBoundFee) }} - Rp. {{ formatter(selectedTutor.upperBoundFee) }}
 							v-btn.md4.white--text(fluid color="orange accent-2") Book	
 			
 </template>
