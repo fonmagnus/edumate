@@ -3,7 +3,7 @@
 		v-flex.xs12
 			v-toolbar.pa-3
 				v-flex.xs3
-					.display-1 Edumate
+					span.hover.display-1(@click="gotoHome") Edumate
 				v-flex.xs6.pl-3.pr-3.pt-2
 					v-text-field(label="I want to Learn ...", prepend-icon="search" color="orange accent-3")
 				v-flex.xs1
@@ -58,6 +58,16 @@
 				this.$emit('logoutUser');
 				this.hideLoginDialog();
 			},
+			gotoHome() {
+				this.$router.push('/home');
+			}
 		},
 	};
 </script>
+
+<style scoped>
+	.hover:hover{
+		cursor: pointer;
+	}
+</style>
+

@@ -33,8 +33,9 @@
 									v-chip(color="orange lighten-5") {{ course }}
 						v-card-actions
 							v-flex.md6
-							v-btn.md4.orange--text(flat fluid @click="openTutorInfo(tutor)") Detail
-							v-btn.md4.white--text(fluid color="orange accent-2") Book	
+							v-flex.md4
+							//- v-btn.md4.orange--text(flat fluid ) Detail
+							v-btn.md4.white--text(fluid color="orange accent-2" @click="openTutorInfo(tutor)") View	
 			
 </template>
 

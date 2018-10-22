@@ -29,10 +29,15 @@
 												.display-1.orange--text.mx-3.mt-4.mb-2.font-weight-medium {{ selectedTutor.name }}
 										v-layout(row wrap)
 											v-flex.md12.mx-3
+												.body-2.font-weight-light Age : {{ selectedTutor.age }}
+										v-layout(row wrap)
+											v-flex.md12.mx-3
 												.body-2.font-weight-light {{selectedTutor.city}}, {{ selectedTutor.province }}
 										v-layout(row wrap)
 											v-flex.md12.mx-3
-												.body-2.font-weight-light Age : {{ selectedTutor.age }}
+												span
+													v-icon(small) place
+												span.body-2.font-weight-light.pl-3 {{selectedTutor.locationAddress }}
 										br
 										v-layout(row wrap)
 											v-flex.md12.mx-3
@@ -83,9 +88,11 @@
 											template(slot="items", slot-scope="props")
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.day }}
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.timeStart }} - {{ props.item.timeEnd }}
+												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.lesson }}
+												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.grade }}
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.sessionType }}
 												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.currentQuota }} / {{ props.item.maxQuota }}
-												td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.currentQuota === props.item.maxQuota ? 'Not Available' : 'Available' }}
+												//- td.text-xs-left(:class="props.item.currentQuota === props.item.maxQuota ? 'orange--text' : 'black--text'") {{ props.item.currentQuota === props.item.maxQuota ? 'Not Available' : 'Available' }}
 												td.text-xs-center.pt-3.pl-5
 													v-checkbox(:disabled="props.item.currentQuota === props.item.maxQuota" 
 																		:input-value="isChecked(props.item.id)" 
@@ -101,15 +108,31 @@
 												slot="activator") Book Now
 											v-card
 												v-card-title.headline.orange.accent-3.white--text Booking Confirmation
-												v-card-text.body-1 You're about to book these following schedules : 
+												v-card-text.body-1 You're about to book schedule of this following tutor : 
 												v-container
-													v-layout(row wrap v-for="schedule in selectedSchedule")
-														v-flex.xs3.subheading
-															span {{ schedule.day }}
-														v-flex.xs3.subheading
-															span {{ schedule.timeStart }} - {{ schedule.timeEnd }}
-														v-flex.xs3.subheading
-															span {{ schedule.sessionType }}
+													v-layout(row wrap)
+														v-flex.xs12.subheading
+															span Name : 
+															span.orange--text.font-weight-bold {{ selectedTutor.name }}
+													v-layout(row wrap)
+														v-flex.xs12.subheading
+															span Location : 
+															span.orange--text.font-weight-bold {{ selectedTutor.locationAddress }}
+												v-container
+													v-layout(row wrap)
+														span.subheading Schedule : 
+													br
+													v-layout.mt-2(row wrap v-for="schedule in selectedSchedule")
+														v-flex.xs2
+															span.orange--text.font-weight-bold {{ schedule.day }}
+														v-flex.xs3
+															span.orange--text.font-weight-bold {{ schedule.timeStart }} - {{ schedule.timeEnd }}
+														v-flex.xs3
+															span.orange--text.font-weight-bold {{ schedule.grade }}
+														v-flex.xs2
+															span.orange--text.font-weight-bold {{ schedule.lesson }}
+														v-flex.xs2
+															span.orange--text.font-weight-bold {{ schedule.sessionType }}
 												v-container
 													v-layout(row wrap)
 														v-flex.xs4.body-1 Are You Sure?
@@ -118,7 +141,7 @@
 														v-flex.xs3
 															v-btn.body-1.orange--text.text-xs-center(flat @click="showBookingConfirmation = false") Cancel
 														v-flex.xs3
-															v-btn.body-1.white--text.text-xs-center(color="orange accent-3") Confirm
+															v-btn.body-1.white--text.text-xs-center(color="orange accent-3" @click="gotoPayment") Confirm
 
 								//- br
 								//- v-layout(row wrap)
@@ -158,9 +181,10 @@ export default {
 			scheduleHeaders: [
 				{ text: 'Day', align: 'left', sortable: false, value: 'title'},
 				{ text: 'Time', align: 'left', sortable: false, value: 'title'},
+				{ text: 'Lesson', align: 'left', sortable: false, value: 'title'},
+				{ text: 'Grade', align: 'left', sortable: false, value: 'title'},
 				{ text: 'Session Type', align: 'left', sortable: false, value: 'title'},
 				{ text: 'Quota', align: 'left', sortable: false, value: 'title'},
-				{ text: 'Available', align: 'left', sortable: false, value: 'title'},
 				{ text: 'Book Now', align: 'left', sortable: false, value: 'title'},
 			],
 		};
@@ -251,7 +275,14 @@ export default {
 		backToTop () {
       window.smoothscroll()
       this.$emit('scrolled');
-    },
+		},
+		gotoPayment() {
+			this.$store
+				.dispatch('tutor/setSchedule', this.selectedSchedule)
+				.then(() => {
+					this.$router.push('/payment');
+				});
+		},
 	},
 }
 </script>
