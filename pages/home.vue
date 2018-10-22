@@ -3,9 +3,15 @@
 		v-layout(row wrap)
 			Header(:openLoginDialog="openLoginDialog" 
 						 :isLoggedIn="isLoggedIn"
+						 :openSignupDialog="openSignupDialog"
 						 :edumateUser="edumateUser"
+						 :openVerificationNotice="openVerificationNotice"
 						 @showLoginDialog="showLoginDialog"
 						 @hideLoginDialog="hideLoginDialog"
+						 @showSignupDialog="showSignupDialog"
+						 @hideSignupDialog="hideSignupDialog"
+						 @showVerificationNotice="showVerificationNotice"
+						 @hideVerificationNotice="hideVerificationNotice"
 						 @loginUser="loginUser"
 						 @logoutUser="logoutUser")
 		v-layout(row wrap)
@@ -32,10 +38,12 @@ export default {
     return {
 			isLoggedIn: false,
 			openLoginDialog: false,
+			openSignupDialog: false,
+			openVerificationNotice: false,
 			edumateUser: {
 				username: '',
 			},
-    };
+		};
   },
   methods: {
 		showLoginDialog() {
@@ -51,6 +59,18 @@ export default {
 		logoutUser() {
 			this.edumateUser = {};
 			this.isLoggedIn = false;
+		},
+		showSignupDialog() {
+			this.openSignupDialog = true;
+		},
+		hideSignupDialog() {
+			this.openSignupDialog = false;
+		},
+		showVerificationNotice() {
+			this.openVerificationNotice = true;
+		},
+		hideVerificationNotice() {
+			this.openVerificationNotice = false;
 		},
   },
 }

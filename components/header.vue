@@ -15,7 +15,14 @@
 											:isLoggedIn="isLoggedIn"
 											@hideLoginDialog="hideLoginDialog"
 											@loginUser="loginUser")
-					v-btn.orange--text.subheading(round, color="grey lighten-2") Sign Up
+					v-dialog(v-model="openSignupDialog", max-width="450px",  transition="slide-y-reverse-transition", persistent)
+						v-btn.orange--text.subheading(slot="activator" round, color="grey lighten-2" @click.native="showSignupDialog") Sign Up
+						SignUpForm(:openSignupDialog="openSignupDialog"
+											@hideSignupDialog="hideSignupDialog"
+											@showVerificationNotice="showVerificationNotice")
+					v-dialog(v-model="openVerificationNotice", max-width="450px",  transition="slide-y-reverse-transition", persistent)
+						VerificationNotice(:openVerificationNotice="openVerificationNotice"
+											@hideVerificationNotice="hideVerificationNotice")
 				v-flex.xs6.text-xs-right(v-else)
 					span Welcome Back, {{ edumateUser.username }}!   
 						a.orange--text(@click="logoutUser") Logout
@@ -24,10 +31,14 @@
 
 <script>
 	import LoginForm from '../components/loginform.vue';
+	import SignUpForm from '../components/signupform.vue';
+	import VerificationNotice from '../components/verificationnotice.vue';
 
 	export default {
 		components: {
 			LoginForm,
+			SignUpForm,
+			VerificationNotice,
 		},
 		props: {
 			openLoginDialog: {
@@ -41,6 +52,14 @@
 			edumateUser: {
 				type: Object,
 				required: true,
+			},
+			openSignupDialog: {
+				type: Boolean,
+				default: false,
+			},
+			openVerificationNotice: {
+				type: Boolean,
+				default: false,
 			},
 		},
 		methods: {
@@ -60,7 +79,20 @@
 			},
 			gotoHome() {
 				this.$router.push('/home');
-			}
+			},
+			showSignupDialog() {
+				this.$emit('showSignupDialog');
+			},
+			hideSignupDialog() {
+				this.$emit('hideSignupDialog');
+			},
+			showVerificationNotice() {
+				console.log('hehe');
+				this.$emit('showVerificationNotice');
+			},
+			hideVerificationNotice() {
+				this.$emit('hideVerificationNotice');
+			},
 		},
 	};
 </script>
