@@ -19,6 +19,13 @@ const states = () => ({
 			phoneNumber: '0857-100-4567',
 			photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0EuYjF49hIC4G4Ghb-qZ7Dd__fdsRozNn2MHEeNe-bmfvSgN',
 		},
+
+		{
+			id: 4,
+			name: 'George Christian',
+			phoneNumber: '0858-110-4222',
+			photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS0EuYjF49hIC4G4Ghb-qZ7Dd__fdsRozNn2MHEeNe-bmfvSgN',
+		},
 		
 	],
 });
