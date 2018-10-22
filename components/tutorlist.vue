@@ -7,7 +7,7 @@
 			v-flex.xs3(v-for="tutor in filteredTutorList")
 				v-hover
 					v-card.mx-2.my-3(raised slot-scope="{ hover }" class="ma auto")
-						v-img(:src="tutor.photo" height="250px")
+						v-img(:src="tutor.photo" height="300px")
 							div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-left(
 								color="orange lighten-5", 
 								v-if="hover" 

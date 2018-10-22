@@ -3,6 +3,7 @@
 		v-flex.xs12
 			v-toolbar.pa-3
 				v-flex.xs3
+					//- v-img.hover(src="https://i.postimg.cc/q7Vj3Qf5/efleq1.png" @click="gotoHome" height="90px")
 					span.hover.display-1(@click="gotoHome") Edumate
 				v-flex.xs6.pl-3.pr-3.pt-2
 					v-text-field(label="I want to Learn ...", prepend-icon="search" color="orange accent-3")

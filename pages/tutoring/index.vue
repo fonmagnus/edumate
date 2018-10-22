@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-container
+	div(fluid)
 		v-layout(row wrap)
 			v-flex.pa-4.text-xs-center(xs12)
 				.display-2 What's Your Grade?
@@ -33,6 +33,9 @@ export default {
 		...mapGetters({
 			tutorFilter: 'tutorfilter/getTutorFilter',
 		}),
+	},
+	mounted() {
+		window.scrollTo(0,0);
 	},
 	methods: {
 		gotoElementary() {
