@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-container(fluid)
+	div(fluid)
 		v-layout.pt-3(row wrap)
 			HomeBanner
 		br

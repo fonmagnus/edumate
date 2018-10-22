@@ -7,11 +7,11 @@
 			v-flex.xs3(v-for="tutor in filteredTutorList")
 				v-hover
 					v-card.mx-2.my-3(raised slot-scope="{ hover }" class="ma auto")
-						v-img(:src="tutor.photo" height="250px")
+						v-img(:src="tutor.photo" height="300px")
 							div.hovercard.d-flex.v-card--reveal.display-2.white--text.text-xs-left(
 								color="orange lighten-5", 
 								v-if="hover" 
-								@click="")
+								@click="openTutorInfo(tutor)")
 								v-container
 									v-layout(row wrap)
 										v-flex(md4)
@@ -31,11 +31,9 @@
 							v-layout(row wrap)
 								span(v-for="course in tutor.courseList")
 									v-chip(color="orange lighten-5") {{ course }}
-						v-card-actions
-							v-flex.md6
+						v-card-actions.text-xs-center
 							v-flex.md4
-							//- v-btn.md4.orange--text(flat fluid ) Detail
-							v-btn.md4.white--text(fluid color="orange accent-2" @click="openTutorInfo(tutor)") View	
+							v-btn.md6.ml-2.my-2.white--text(fluid color="orange accent-2" @click="openTutorInfo(tutor)") View	
 			
 </template>
 

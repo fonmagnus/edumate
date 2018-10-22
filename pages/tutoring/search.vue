@@ -36,6 +36,8 @@ export default {
 	},
 	mounted() {
 		this.filteredTutorList = this.tutorList;
+		this.$store.dispatch('util/setRandomAmount', -1);
+		window.scrollTo(0,0);
 	},
 	methods: {
 		updateFilteredTutor(tutors) {

@@ -3,11 +3,12 @@
 		v-flex.xs12
 			v-toolbar.pa-3
 				v-flex.xs3
+					//- v-img.hover(src="https://i.postimg.cc/q7Vj3Qf5/efleq1.png" @click="gotoHome" height="90px")
 					span.hover.display-1(@click="gotoHome") Edumate
 				v-flex.xs6.pl-3.pr-3.pt-2
-					v-text-field(label="I want to Learn ...", prepend-icon="search" color="orange accent-3")
+					v-text-field(v-model="searchParam" label="I want to Learn ...", prepend-icon="search" color="orange accent-3")
 				v-flex.xs1
-					v-btn(flat) search
+					v-btn(flat @click="searchTutor(searchParam)") search
 				v-flex.xs6(v-if="!isLoggedIn" class="text-xs-right")
 					v-dialog(v-model="openLoginDialog", max-width="450px",  transition="slide-y-reverse-transition", persistent)
 						v-btn.white--text.subheading(slot="activator" round, color="orange accent-2" @click.native="showLoginDialog") LOGIN
@@ -62,6 +63,11 @@
 				default: false,
 			},
 		},
+		data() {
+			return {
+				searchParam: '',
+			};
+		},
 		methods: {
 			showLoginDialog() {
 				this.$emit('showLoginDialog');
@@ -80,6 +86,7 @@
 			gotoHome() {
 				this.$router.push('/home');
 			},
+<<<<<<< HEAD
 			showSignupDialog() {
 				this.$emit('showSignupDialog');
 			},
@@ -93,6 +100,14 @@
 			hideVerificationNotice() {
 				this.$emit('hideVerificationNotice');
 			},
+=======
+			searchTutor(searchParam) {
+				this.$store.dispatch('tutorfilter/setTutorFilter', {
+					selectedCourseList: [searchParam],
+				});
+				this.$router.push('/tutoring/search');
+			}
+>>>>>>> master
 		},
 	};
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-	v-container(fluid)
+	div(fluid)
 		v-layout(row wrap)
 			Header(:openLoginDialog="openLoginDialog" 
 						 :isLoggedIn="isLoggedIn"
@@ -17,6 +17,7 @@
 		v-layout(row wrap)
 			Menubar
 		nuxt-child
+		br
 		v-layout(row wrap)
 		Footer
 </template>
@@ -45,6 +46,9 @@ export default {
 			},
 		};
   },
+	mounted() {
+		window.scrollTo(0,0);
+	},
   methods: {
 		showLoginDialog() {
 			this.openLoginDialog = true;

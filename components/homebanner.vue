@@ -2,9 +2,9 @@
 	v-flex(xs12 fluid)
 		v-card(fluid)
 			v-img.transparent(src="https://41ff701vpzvf2ulz052zsy42-wpengine.netdna-ssl.com/wp-content/uploads/2016/11/10_Home_school_2-1-min-1024x576.jpg" 
-						height="400px" 
+						height="500px" 
 						class="gray--text")
-				v-container(fluid)
+				v-container(fluid justify-center)
 					v-layout(row wrap).mt-5.ml-5
 						v-flex.md4
 						v-flex.md8.mt-5

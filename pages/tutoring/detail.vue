@@ -198,6 +198,7 @@ export default {
 		if(this.selectedTutor.name == null) {
 			this.$router.push('/tutoring/search');
 		}
+		window.scrollTo(0,0);
 		window.smoothscroll = () => {
       let currentScroll = document.documentElement.scrollTop || document.body.scrollTop
       if (currentScroll > 0) {
