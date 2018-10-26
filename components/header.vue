@@ -86,7 +86,6 @@
 			gotoHome() {
 				this.$router.push('/home');
 			},
-<<<<<<< HEAD
 			showSignupDialog() {
 				this.$emit('showSignupDialog');
 			},
@@ -94,20 +93,17 @@
 				this.$emit('hideSignupDialog');
 			},
 			showVerificationNotice() {
-				console.log('hehe');
 				this.$emit('showVerificationNotice');
 			},
 			hideVerificationNotice() {
 				this.$emit('hideVerificationNotice');
 			},
-=======
 			searchTutor(searchParam) {
 				this.$store.dispatch('tutorfilter/setTutorFilter', {
 					selectedCourseList: [searchParam],
 				});
 				this.$router.push('/tutoring/search');
 			}
->>>>>>> master
 		},
 	};
 </script>
