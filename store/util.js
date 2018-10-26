@@ -1,3 +1,4 @@
+import axios from 'axios';
 const states = () => ({
 	randomAmount: -1,
 });

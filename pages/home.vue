@@ -27,6 +27,7 @@ import Header from '../components/header.vue';
 import HomeBanner from '../components/homebanner.vue';
 import Footer from '../components/footer.vue';
 import Menubar from '../components/menubar.vue';
+import axios from 'axios';
 
 export default {
   components: {
