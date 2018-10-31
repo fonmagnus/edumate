@@ -4,7 +4,6 @@
 			Header(:openLoginDialog="openLoginDialog" 
 						 :isLoggedIn="isLoggedIn"
 						 :openSignupDialog="openSignupDialog"
-						 :edumateUser="edumateUser"
 						 :openVerificationNotice="openVerificationNotice"
 						 @showLoginDialog="showLoginDialog"
 						 @hideLoginDialog="hideLoginDialog"
@@ -23,6 +22,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Header from '../components/header.vue';
 import HomeBanner from '../components/homebanner.vue';
 import Footer from '../components/footer.vue';
@@ -38,15 +38,16 @@ export default {
   },
   data(){
     return {
-			isLoggedIn: false,
 			openLoginDialog: false,
 			openSignupDialog: false,
 			openVerificationNotice: false,
-			edumateUser: {
-				username: '',
-			},
 		};
   },
+	computed: {
+		...mapGetters({
+			isLoggedIn: 'auth/getIsLoggedIn',
+		}),
+	},
 	mounted() {
 		window.scrollTo(0,0);
 	},
@@ -58,12 +59,12 @@ export default {
 			this.openLoginDialog = false;
 		},
 		loginUser(loggedInEdumateUser) {
-			this.isLoggedIn = true;
-			this.edumateUser = loggedInEdumateUser;
+			this.$store.dispatch('auth/setIsLoggedIn', true);
 		},
 		logoutUser() {
-			this.edumateUser = {};
-			this.isLoggedIn = false;
+			this.$store.dispatch('auth/setIsLoggedIn', false);
+			this.$store.dispatch('user/setSelectedUser', {});
+			this.$store.dispatch('auth/clearAccessToken');
 		},
 		showSignupDialog() {
 			this.openSignupDialog = true;

@@ -7,7 +7,7 @@
 		v-card-text
 			v-layout(row wrap)
 				v-flex.xs12.pl-3.pr-3
-					v-text-field(v-model="username", color="orange accent-3" label="Email", prepend-icon="person_pin")
+					v-text-field(v-model="email", color="orange accent-3" label="Email", prepend-icon="person_pin")
 			v-layout(row wrap)
 				v-flex.xs12.pl-3.pr-3
 					v-text-field(v-model="password", color="orange accent-3" label="Password", prepend-icon="lock", type="password")
@@ -36,7 +36,7 @@ export default {
     },
     data() {
 			return{
-				username: '',
+				email: '',
 				password: '',
 				password_confirmation: '',
 				errorText: '',
@@ -51,18 +51,18 @@ export default {
 				this.isValidMail = true;
 				this.isValidPass = true;
 				this.isValid = true;
-				this.username = '';
+				this.email = '';
 				this.password = '';
 				this.password_confirmation = '';
 			},
 			validateUser(){
-				if(this.username.includes("mail.com") && this.password === this.password_confirmation && this.password.length > 0){
+				if(this.email.includes("mail.com") && this.password === this.password_confirmation && this.password.length > 0){
 					this.createNewUser();
 					this.isValidMail = true;
 					this.isValidPass = true;
 					this.isValid = true;
 					this.password = '';
-					this.username = '';
+					this.email = '';
 					this.password_confirmation = '';
 					this.$emit('showVerificationNotice');
 					this.$emit('hideSignupDialog');
@@ -70,7 +70,7 @@ export default {
 				else{
 					this.isValid = false;
 
-					if(!this.username.includes("mail.com")){
+					if(!this.email.includes("mail.com")){
 						this.isValidMail = false;
 					}
 					if(this.password !== this.password_confirmation || this.password.length === 0){
@@ -94,7 +94,7 @@ export default {
 				this.$store
 				.dispatch('user/registerUser', {
 					user: {
-						email: this.username,
+						email: this.email,
 						password: this.password,
 						password_confirmation: this.password_confirmation,
 						role: 'user',

@@ -25,12 +25,13 @@
 						VerificationNotice(:openVerificationNotice="openVerificationNotice"
 											@hideVerificationNotice="hideVerificationNotice")
 				v-flex.xs6.text-xs-right(v-else)
-					span Welcome Back, {{ edumateUser.username }}!   
+					span Welcome Back, {{ parse(currentUser.email) }}!   
 						a.orange--text(@click="logoutUser") Logout
 						
 </template>
 
 <script>
+	import { mapGetters } from 'vuex';
 	import LoginForm from '../components/loginform.vue';
 	import SignUpForm from '../components/signupform.vue';
 	import VerificationNotice from '../components/verificationnotice.vue';
@@ -46,14 +47,6 @@
 				type: Boolean,
 				default: false,
 			},
-			isLoggedIn: {
-				type: Boolean,
-				default: false,
-			},
-			edumateUser: {
-				type: Object,
-				required: true,
-			},
 			openSignupDialog: {
 				type: Boolean,
 				default: false,
@@ -67,6 +60,12 @@
 			return {
 				searchParam: '',
 			};
+		},
+		computed: {
+			...mapGetters({
+				isLoggedIn: 'auth/getIsLoggedIn',
+				currentUser: 'user/getCurrentUser',
+			}),
 		},
 		methods: {
 			showLoginDialog() {
@@ -103,7 +102,15 @@
 					selectedCourseList: [searchParam],
 				});
 				this.$router.push('/tutoring/search');
-			}
+			},
+			parse(email) {
+				let res = '';
+				for(let i = 0; i < email.length; i++) {
+					if(email[i] == '@') break;
+					res += email[i];
+				}
+				return res;
+			},
 		},
 	};
 </script>

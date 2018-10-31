@@ -7,7 +7,7 @@
 		v-card-text
 			v-layout(row wrap)
 				v-flex.xs12.pl-3.pr-3
-					v-text-field(v-model="username", color="orange accent-3" label="Email", prepend-icon="person_pin")
+					v-text-field(v-model="email", color="orange accent-3" label="Email", prepend-icon="person_pin")
 			v-layout(row wrap)
 				v-flex.xs12.pl-3.pr-3
 					v-text-field(v-model="password", color="orange accent-3" label="Password", prepend-icon="lock", type="password")
@@ -25,12 +25,11 @@
 
 
 <script>
+	
+	import { mapGetters } from 'vuex';
+
 	export default {
 		props: {
-			isLoggedIn: {
-				type: Boolean,
-				default: false,
-			},
 			openLoginDialog: {
 				type: Boolean,
 				default: false,
@@ -38,32 +37,43 @@
 		},
 		data() {
 			return {
-				username: '',
+				email: '',
 				password: '',
 				isValid: true,
 			};
+		},
+		computed: {
+			...mapGetters({
+				isLoggedIn: 'auth/getIsLoggedIn',
+				currentUser: 'user/getCurrentUser',
+			}),
 		},
 		methods: {
 			hideLoginDialog() {
 				this.$emit('hideLoginDialog');
 				this.isValid = true;
-				this.username = '';
+				this.email = '';
 				this.password = '';
 			},
 			validateUser() {
-				if(this.username === 'fonmagnus' && this.password === 'admin') {
-					this.isValid = true;
-					this.password = '';
-					this.$emit('loginUser', { 
-						username: this.username, 
+				this.$store
+					.dispatch('auth/loginUser', {
+						auth: {
+							email: this.email,
+							password: this.password,
+						}
+					})
+					.then((response) => {
+						this.$store.dispatch('user/setCurrentUser', {
+							email: this.email,
+							password: this.password,
+						});
+						this.$store.dispatch('auth/setIsLoggedIn', true);
+						this.isValid = true;
+						this.password = '';
+						this.email = '';
+						this.$emit('hideLoginDialog');
 					});
-					this.username = '';
-					this.$emit('hideLoginDialog');
-				}
-				else {
-					this.isValid = false;
-					return;
-				}
 			},
 		}
 	};

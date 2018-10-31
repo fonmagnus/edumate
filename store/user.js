@@ -18,7 +18,6 @@ const actions = {
 		commit('setCurrentUser', data);
 	},
 	async registerUser({ commit }, param) {
-		console.log(param);
 		const response = await axios.post('http://localhost:5000/users/create', param);
 		return response;
 	},
