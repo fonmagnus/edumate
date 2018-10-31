@@ -13,7 +13,7 @@
 				v-flex.xs6
 					v-btn(:disabled="true" flat)
 				v-flex.xs3
-					//v-btn.orange--text.subheading(flat, @click="hideSignupDialog") Cancel
+					v-btn.orange--text.subheading(flat, @click="hideSignupDialog") Cancel
 				v-flex.xs3
 					v-btn.orange.accent-2.white--text.subheading(flat, @click="hideVerificationNotice") Okay
 </template>
@@ -21,15 +21,15 @@
 <script>
 export default {
     props: {
-        openVerificationNotice: {
-            type: Boolean,
-            default: false,
-        },
+			openVerificationNotice: {
+				type: Boolean,
+				default: false,
+			},
 	},
-    methods: {
-        hideVerificationNotice() {
-            this.$emit('hideVerificationNotice');
-        },
-    },
+	methods: {
+		hideVerificationNotice() {
+			this.$emit('hideVerificationNotice');
+		},
+	},
 }
 </script>
